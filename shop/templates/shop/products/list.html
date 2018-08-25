@@ -3,6 +3,50 @@
 {% block title %}Ihfazhillah Shop{% endblock %}
 
 {% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-5 pt-4 mb-5">
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand">Categories:</span>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% if not category %}active{% endif %}">
+              <a class="nav-link" href="/">All
+                {% if not category %}
+                <span class="sr-only">(current)</span>
+                {% endif %}
+              </a>
+            </li>
+            {% for cat in categories %}
+            <li class="nav-item {% if category and category.name == cat.name %}active{% endif %}">
+              <a class="nav-link " href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+              {% if category and category.id == cat.id %}
+                <span class="sr-only">(current)</span>
+              {% endif %}
+            </li>
+            {% endfor %}
+
+          </ul>
+          <!-- Links -->
+
+          <form class="form-inline">
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </div>
+          </form>
+        </div>
+        <!-- Collapsible content -->
+
+      </nav>
  <section class="text-center my-5">
 
         <!--Grid row-->
