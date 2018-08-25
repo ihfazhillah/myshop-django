@@ -22,6 +22,10 @@ class Category(models.Model):
         verbose_name_plural = 'categories'
 
 
+class AvailableProductManager(models.Manager):
+    def all(self):
+        return self.get_queryset().filter(is_available=True)
+
 class Product(models.Model):
     category = models.ForeignKey(Category,
                                  related_name='products')
@@ -34,9 +38,11 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField()
-    available = models.BooleanField(default=True)
+    is_available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    available = AvailableProductManager()
 
     def __str__(self):
         return self.name
