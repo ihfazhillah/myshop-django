@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Your cart{% endblock %}
+
+{% block content %}
+<section class="pt-5 mb-5">
+  <h2>Your shopping cart</h2>
+  <hr>
+  
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Remove</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in cart %}
+    {% with product=item.product %}
+    <tr>
+      <th scope="row"><img class="img img-thumbnail rounded" src="{{product.image.url}}" alt=""></th>
+      <td>{{ product.name }}</td>
+      <td>{{ item.quantity }}</td>
+      <td><a href="{% url 'cart:remove' product.id %}" class='btn btn-sm btn-danger'>Remove</a></td>
+      <td>{{ item.price }}</td>
+      <td>{{ item.total_price }}</td>
+    </tr>
+    {% endwith %}
+    {% endfor %}
+    <tr class='table-primary'>
+      <td>Total</td>
+      <td colspan='4'></td>
+      <td>{{ cart.total_price }}</td>
+    </tr>
+  </tbody>
+</table>
+</section>
+
+<section class="pt-5">
+  <p class="text-right">
+    <a class="btn btn-default" href="{% url 'shop:product-list' %}">Continue shopping</a>
+    <a class="btn btn-primary" href="#">Checkout</a>
+  </p>
+</section>
+{% endblock %}
