@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'shop',
     'cart',
     'crispy_forms',
+    'orders',
 )
 
 MIDDLEWARE_CLASSES = (

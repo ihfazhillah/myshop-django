@@ -48,7 +48,7 @@
 <section class="pt-5">
   <p class="text-right">
     <a class="btn btn-default" href="{% url 'shop:product-list' %}">Continue shopping</a>
-    <a class="btn btn-primary" href="#">Checkout</a>
+    <a class="btn btn-primary" href="{% url 'orders:create' %}">Checkout</a>
   </p>
 </section>
 {% endblock %}
