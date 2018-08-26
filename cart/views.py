@@ -14,11 +14,13 @@ def cart_add(request, product_id):
 
     if form.is_valid():
         cleaned_data = form.cleaned_data
+        print(cleaned_data)
         cart.add(product=product,
                  quantity=cleaned_data['quantity'],
                  update_quantity=cleaned_data['update'])
 
     return redirect('cart:detail')
+
 
 def cart_remove(request, product_id):
     cart = Cart(request)
@@ -29,6 +31,10 @@ def cart_remove(request, product_id):
 
 def cart_detail(request):
     cart = Cart(request)
+
+    for item in cart:
+        item['update_quantity_cart'] = CartAddForm(initial={'quantity': item['quantity'], 
+                                                            'update': True}, is_update=True)
     return render(request,
                   'cart/detail.html',
                   {'cart': cart})

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Your cart{% endblock %}
 
@@ -24,7 +25,11 @@
     <tr>
       <th scope="row"><img class="img img-thumbnail rounded" src="{{product.image.url}}" alt=""></th>
       <td>{{ product.name }}</td>
-      <td>{{ item.quantity }}</td>
+      <td>
+        <form action="{% url 'cart:add' product.id %}" method="post">
+          {% crispy item.update_quantity_cart %}
+        </form>
+      </td>
       <td><a href="{% url 'cart:remove' product.id %}" class='btn btn-sm btn-danger'>Remove</a></td>
       <td>{{ item.price }}</td>
       <td>{{ item.total_price }}</td>

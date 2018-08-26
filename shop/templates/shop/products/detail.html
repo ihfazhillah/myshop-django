@@ -44,11 +44,7 @@
             <p>{{ product.description }}</p>
 
             <form class="d-flex justify-content-left" method='post' action="{% url 'cart:add' product.id %}">
-              {% csrf_token %}
-              {{ cart_add_form|crispy }}
-              <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
-                <i class="fa fa-shopping-cart ml-1"></i>
-              </button>
+              {% crispy cart_add_form %}
             </form>
 
 
