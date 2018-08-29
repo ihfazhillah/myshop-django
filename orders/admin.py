@@ -29,7 +29,6 @@ def export_to_csv(ModelAdmin, request, queryset):
 export_to_csv.short_description = 'Export to Csv'
 
 
-
 # Register your models here.
 
 class OrderItemInline(admin.TabularInline):
@@ -42,6 +41,15 @@ def order_detail(obj):
     )
 order_detail.allow_tags = True
 
+def order_pdf(obj):
+    return '<a href="{}">Print PDF</a>'.format(
+        reverse('orders:admin-order-pdf', args=[obj.id])
+    )
+
+order_pdf.allow_tags = True
+order_pdf.short_description = 'PDF Bill'
+
+
 def hello(obj):
     return 'hello'
 
@@ -49,7 +57,7 @@ def hello(obj):
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'first_name', 'last_name', 'email',
                     'address', 'postal_code', 'city', 'paid',
-                    'created', 'updated', order_detail, hello]
+                    'created', 'updated', order_detail, order_pdf]
     list_filter = ['created', 'paid', 'updated']
     inlines = [OrderItemInline]
     actions = [export_to_csv]
