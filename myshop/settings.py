@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'cart',
     'crispy_forms',
     'orders',
+    'coupons',
 )
 
 MIDDLEWARE_CLASSES = (
