@@ -175,6 +175,15 @@
     <div class="footer-copyright py-3">
       © 2018 Copyright:
       <a href="https://blog.ihfazh.com" target="_blank">Ihfazhillah</a>
+      {% get_current_language as LANGUAGE_CODE %}
+      {% get_available_languages as LANGUAGES %}
+      {% get_language_info_list for LANGUAGES  as languages %}
+      <p>
+      {% trans 'Languages' %}: 
+      {% for language in languages %}
+      <a href="/{{ language.code }}">{{language.name_local}}</a>
+      {% endfor %}
+      </p>
     </div>
     <!--/.Copyright-->
 
