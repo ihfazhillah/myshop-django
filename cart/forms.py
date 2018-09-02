@@ -1,7 +1,11 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout,Field, Fieldset, ButtonHolder,HTML, Submit
 from crispy_forms.bootstrap import FieldWithButtons, StrictButton
+
+update = _('Update')
+add_to_cart = _('Add to cart')
 
 
 class CartAddForm(forms.Form):
@@ -18,15 +22,15 @@ class CartAddForm(forms.Form):
         if is_update:
             self.helper.layout = Layout(
                     Field('update', type='hidden'),
-                    FieldWithButtons('quantity', Submit(name='submit', value='Update' ,css_class='btn-primary'), css_class='md-form'),
+                    FieldWithButtons('quantity', Submit(name='submit', value=update,css_class='btn-primary'), css_class='md-form'),
                 )
         else:
             self.helper.layout = Layout(
                     Field('update', type='hidden'),
-                    FieldWithButtons('quantity', HTML('''<button class="btn btn-primary" type="submit">Add to cart
+                    FieldWithButtons('quantity', HTML('''<button class="btn btn-primary" type="submit">{submit_text}
                                                                       <i class="fa fa-shopping-cart ml-1"></i>
                                                                     </button>
-                                                      '''), css_class='md-form'),
+                                                      '''.format(submit_text=add_to_cart)), css_class='md-form'),
                 )
 
 

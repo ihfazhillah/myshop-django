@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-02 16:47+0000\n"
+"PO-Revision-Date: 2018-09-02 16:42+0000\n"
+"Last-Translator: b'  <>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Translated-Using: django-rosetta 0.7.6\n"
+
+#: cart/forms.py:7
+msgid "Update"
+msgstr "Ubah"
+
+#: cart/forms.py:8
+msgid "Add to cart"
+msgstr "Tambahkan ke keranjang"
+
+#: cart/urls.py:7
+msgid "^add/(?P<product_id>\\d+)/$"
+msgstr ""
+
+#: cart/urls.py:8
+msgid "^remove/(?P<product_id>\\d+)/$"
+msgstr ""
+
+#: coupons/forms.py:6
+msgid "Coupon"
+msgstr "Kupon"
+
+#: myshop/settings.py:99
+msgid "English"
+msgstr "Inggris"
+
+#: myshop/settings.py:100
+msgid "Indonesian"
+msgstr "Bahasa Indonesia"
+
+#: myshop/urls.py:11
+msgid "^cart/"
+msgstr "^keranjang/"
+
+#: myshop/urls.py:12
+msgid "^orders/"
+msgstr "^pesanan/"
+
+#: myshop/urls.py:13
+#, fuzzy
+#| msgid "Coupon"
+msgid "^coupons/"
+msgstr "^kupon/"
+
+#: orders/models.py:10
+msgid "first name"
+msgstr "nama depan"
+
+#: orders/models.py:11
+msgid "last name"
+msgstr "nama belakang"
+
+#: orders/models.py:12
+msgid "email"
+msgstr "surel"
+
+#: orders/models.py:13
+msgid "address"
+msgstr "alamat"
+
+#: orders/models.py:14
+msgid "postal code"
+msgstr "pos kode"
+
+#: orders/models.py:15
+msgid "city"
+msgstr "kota"
+
+#: orders/models.py:18
+msgid "paid"
+msgstr "lunas"
+
+#: orders/templates/orders/create.html:5
+msgid "Checkout"
+msgstr "Pesan"
+
+#: orders/templates/orders/create.html:8
+msgid "Checkout form"
+msgstr "Form Pemesanan"
+
+#: orders/templates/orders/create.html:35
+msgid "Your cart"
+msgstr "Keranjang Kamu"
+
+#: orders/templates/orders/create.html:45
+msgid "Qty"
+msgstr "Jml"
+
+#: orders/templates/orders/create.html:54
+#, python-format
+msgid ""
+"\n"
+"                  \"%(cart.coupon.code)s\" (%(cart.coupon.discount)s%% off)\n"
+"                "
+msgstr ""
+"\n"
+"\"%(cart.coupon.code)s\" (Diskon %(cart.coupon.discount)s%%)"
+
+#: shop/templates/shop/products/detail.html:5
+msgid "Detail"
+msgstr "Detil"
+
+#: shop/templates/shop/products/detail.html:43
+msgid "Description"
+msgstr "Deskripsi"
+
+#: templates/base.html:10
+msgid "MyShop"
+msgstr "Tokoku"
+
+#: templates/base.html:70
+msgid "Home"
+msgstr "Beranda"
+
+#: templates/base.html:91
+msgid "Cart"
+msgstr "Keranjang"
