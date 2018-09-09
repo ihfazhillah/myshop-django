@@ -1,14 +1,20 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from parler.models import TranslatableModel, TranslatedFields
+from parler.managers import TranslatableQuerySet, TranslatableManager
 
 # Create your models here.
 
-class Category(models.Model):
-    name = models.CharField(max_length=255,
-                            db_index=True)
-    slug = models.SlugField(unique=True,
-                            max_length=255,
-                            db_index=True)
+class Category(TranslatableModel):
+
+    translations = TranslatedFields(
+        name = models.CharField(max_length=255,
+                                db_index=True),
+        slug = models.SlugField(unique=True,
+                                max_length=255,
+                                db_index=True)
+    )
+
 
     def __str__(self):
         return self.name
@@ -17,25 +23,27 @@ class Category(models.Model):
         return reverse('shop:product-list-by-category', args=[self.slug])
 
     class Meta:
-        ordering = ('name',)
+        # ordering = ('name',)
         verbose_name = 'category'
         verbose_name_plural = 'categories'
 
 
-class AvailableProductManager(models.Manager):
+class AvailableProductManager(TranslatableManager):
     def all(self):
         return self.get_queryset().filter(is_available=True)
 
-class Product(models.Model):
-    category = models.ForeignKey(Category,
-                                 related_name='products')
-    name = models.CharField(max_length=255,
-                            db_index=True)
-    slug = models.SlugField(max_length=255,
-                            db_index=True)
+class Product(TranslatableModel):
+    category = models.ForeignKey(Category, related_name='products')
     image = models.ImageField(upload_to='products/%Y/%m/%d',
                               blank=True)
-    description = models.TextField()
+
+    translations = TranslatedFields(
+        slug = models.CharField(max_length=255,
+                                db_index=True),
+        name = models.CharField(max_length=255, db_index=True),
+        description = models.TextField()
+    )
+
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField()
     is_available = models.BooleanField(default=True)
@@ -51,6 +59,7 @@ class Product(models.Model):
         return reverse('shop:product-detail', args=[self.id, self.slug])
 
     class Meta:
-        ordering = ('name', )
-        index_together = (('id', 'slug'),)
+        pass
+        ordering = ('-created', )
+        # index_together = (('id', 'slug'),)
 

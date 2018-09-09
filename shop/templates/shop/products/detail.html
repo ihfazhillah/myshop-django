@@ -52,11 +52,29 @@
           </div>
           <!--Content-->
 
+          {% for suggested in suggestions %}
+          {{ suggested.name }}
+          {% endfor %}
+
         </div>
         <!--Grid column-->
 
       </div>
       <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        {% for suggested in suggestions %}
+        <div class="col-lg-3 col-md-12 mb-4">
+
+          <img src="{{ product.image.url}}" class="img-fluid" alt="{{ product.name }}">
+
+        </div>
+        {% endfor %}
+
+        <!--Grid column-->
+
+      </div>
+
 
 
 {% endblock %}

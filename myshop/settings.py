@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'orders',
     'coupons',
     'rosetta',
+    'parler'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -128,4 +129,19 @@ CART_SESSION_ID = 'cart'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'id'},
+    ),
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False
+    }
+}
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 1
 
